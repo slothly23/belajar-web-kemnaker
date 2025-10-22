@@ -1,3 +1,4 @@
+// let input = "Lima";
 let input = 5;
 
 try {
