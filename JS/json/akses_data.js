@@ -1,4 +1,3 @@
-const { log } = require('console');
 const fs = require('fs');
 // fs = module bawaan Node.js
 // require('fs') = untuk membaca, menulis, dan mengelola file 
