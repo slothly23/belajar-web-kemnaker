@@ -28,7 +28,7 @@ console.log();
 
 // foreach
 console.log("foreach array");
-buah.forEach(function (elemen, index) {
+buah.forEach(function(elemen, index) {
     console.log("index ke - " + index + ": " + elemen);    
 })
 console.log();
@@ -45,7 +45,7 @@ console.log();
 
 // map
 console.log("array map");
-let arrayWarna = mobil.map(function (item) {
+let arrayWarna = mobil.map(function(item) {
     return item.warna;
 });
 console.log(arrayWarna);
@@ -53,7 +53,7 @@ console.log();
 
 // filter
 console.log("array filter");
-let arrayMobilFilter = mobil.filter(function (item) {
+let arrayMobilFilter = mobil.filter(function(item) {
     return item.tipe != "sedan";
 });
 console.log(arrayMobilFilter);

@@ -29,6 +29,10 @@ console.log(buah3);
 console.log();
 
 //menambah elemen di posisi tertentu
+let angka = [1,2,4,5];
+angka.splice(2,0,3);
+console.log(angka);
+console.log();
 
 //menghapus elemen di posisi tertentu
 let angka2 = [1,2,3,4,5];
@@ -46,6 +50,3 @@ console.log(potong);
 console.log();
 
 
-// pengurutan array 
-// array.sort ga pakai function
-// array.sort angka, pakai function
