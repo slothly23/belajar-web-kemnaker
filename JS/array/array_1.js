@@ -59,14 +59,3 @@ let arrayMobilFilter = mobil.filter(function (item) {
 console.log(arrayMobilFilter);
 console.log();
 
-// menambah/ menghapus elemen array
-
-// push
-// pop
-// unshift
-// 
-// 
-
-// pengurutan array 
-// array.sort ga pakai function
-// array.sort angka, pakai function
