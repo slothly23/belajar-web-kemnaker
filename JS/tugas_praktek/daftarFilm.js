@@ -22,9 +22,13 @@ let dataFilmBaru = [
 fs.writeFileSync("film.json", JSON.stringify(dataFilmBaru, null, 2));
 // console.log("Data Film berhasil ditulis ke file film.json");
 
+// baca isi file
 let data = fs.readFileSync('film.json', 'utf-8');
+
+// ubah string JSON jadi array
 let filmArray = JSON.parse(data);
 
+// menapilkan daftar film
 console.log("Daftar Film:");
 filmArray.forEach((film, i) => {
     console.log(`${i + 1}. ${film.judul} (${film.tahun}) - ${film.genre.join(", ")}`);

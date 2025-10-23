@@ -24,10 +24,13 @@ let diskon = 0;
 let totalBayar;
 let kembalian;
 
-// menghitung total belanja dari daftar sepatu yang dibeli
-for (let i = 0; i < sepatuDibeli.length; i++) {
+sepatuDibeli.forEach((data, i) => {
+    // menampilkan daftar sepatu
+    console.log(`${i + 1}. ${data.nama} - Rp. ${data.harga}`);
+
+    // menghitung total belanja dari daftar sepatu yang dibeli
     totalBelanja += sepatuDibeli[i].harga;
-}
+});
 
 // Logika diskon
 if (totalBelanja >= 800000) {
@@ -42,15 +45,9 @@ if (totalBelanja >= 800000) {
 
 // total setelah diskon
 totalBayar = totalBelanja - (totalBelanja * diskon);
-
 kembalian = uangBayar - totalBayar;
 
-// menampilkan daftar sepatu
 console.log("======= Rincian Belanja Sepatu =======");
-sepatuDibeli.forEach((data, i) => {
-    console.log(`${i + 1}. ${data.nama} - Rp. ${data.harga}`);
-});
-
 console.log();
 console.log("Total Belanja = Rp. " + totalBelanja);
 console.log("Diskon = " + (diskon * 100) + "%");
