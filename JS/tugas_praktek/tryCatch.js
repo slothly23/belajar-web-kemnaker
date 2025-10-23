@@ -4,11 +4,11 @@ function bagiAngka(a, b) {
     // tampilkan error jika b = 0
     try {
         if (b == 0) {
-            throw new Error("Tidak bisa membagi dengan nol!");
+            throw new Error("Tidak bisa membagi dengan nol!"); // buat custom error menggunakan throw statement
         }
-        console.log("Hasil pembagian :", hasil);
+        console.log("Hasil pembagian :", hasil); // kalau tidak ada error, program menampilkan hasil
     } catch (error) {
-        console.error("Terjadi kesalahan:", error.message); 
+        console.error("Terjadi kesalahan:", error.message); // jika terjadi error di blok try, tampilkan error message
     }
 }
 
@@ -19,7 +19,7 @@ let angka2 = 2;
 try {
     bagiAngka(angka1, angka3);
 } catch (error) {
-    console.error("Terjadi kesalahan lain:", error.message);   
+    console.error("Terjadi kesalahan lain:", error.message); // jika terjadi error di blok try, tampilkan error message
 }
 
 console.log("Program selesai.");
