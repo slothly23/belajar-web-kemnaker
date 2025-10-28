@@ -78,6 +78,7 @@ class Peserta {
     }
     // method menentukan predikat nilai
     cekNilai() {
+        // console.log bisa taruh sini aja biar sekali aja untuk menampilkan nama,umur,proglat : taruh di satu variabel
         if(this.nilai >= 90) {
             console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Sangat Baik`);
         } else if(this.nilai >= 80) {
