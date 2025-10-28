@@ -79,16 +79,15 @@ class Peserta {
     // method menentukan predikat nilai
     cekNilai() {
         if(this.nilai >= 90) {
-            console.log(`Nilai : ${this.nilai}, Keterangan: Sangat Baik`);
+            console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Sangat Baik`);
         } else if(this.nilai >= 80) {
-            console.log(`Nilai : ${this.nilai}, Keterangan: Baik`);
+            console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Baik`);
         } else if(this.nilai >= 70) {
-            console.log(`Nilai : ${this.nilai}, Keterangan: Cukup`);
+            console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Cukup`);
         } else if(this.nilai >= 60) {
-            console.log(`Nilai : ${this.nilai}, Keterangan: Kurang`);
+            console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Kurang`);
         } else {
-            console.log(`Nilai : ${this.nilai}, Keterangan: Tidak Lulus`);
-
+            console.log(`Nama : ${this.nama}, Nilai : ${this.nilai}, Keterangan: Tidak Lulus`);
         }
     }
 }
