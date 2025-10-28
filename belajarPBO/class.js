@@ -25,7 +25,7 @@
 // console.log(mobil2.brand);
 
 
-// latihan class
+// LATIHAN CLASS
 
 // buat sebuah class dengan nama: peserta, proprti: nama, umur, program pelatihan (proglat: pblWeb)
 
@@ -38,10 +38,14 @@ class Peserta {
 }
 
 // instantiate
+var peserta1 = new Peserta('Daisy', 20, 'pbl Web');
 
-var peserta1 = new Peserta('Daisy', 20, 'pblWeb');
-console.log("nama : " + peserta1.nama);
+// tampilkan ke bawah
+console.log("Nama : " + peserta1.nama);
 console.log("Umur: " + peserta1.umur + " thn");
 console.log("Program Pelatihan : " + peserta1.proglat);
+console.log();
 
 
+// ditampilkan kesamping
+console.log(peserta1.nama, peserta1.umur, peserta1.proglat);
