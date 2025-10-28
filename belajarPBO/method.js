@@ -32,8 +32,8 @@ console.log(mobil2.sound("Haiii"));
 // class kombinasi properti + method
 class Laptop {
     constructor(merk, baterai){
-        this.merk = merk;
-        this.baterai = baterai;
+        this.merk = merk; // ini properti
+        this.baterai = baterai; // ini properti
     }
     // method
     // perilaku methodnya adalah percabangan
@@ -50,4 +50,59 @@ class Laptop {
 
 // instantiate
 const laptop1 = new Laptop("Asus", 90);
+// untuk menampilkan langsung panggil method karena di dalamnya sudah ada console.log
 laptop1.cekBaterai();
+
+
+
+// LATIHAN METHOD
+/* 
+properti nilai, 
+
+ketentuan 100 - 90 sangat baik
+89 - 80 baik
+79 - 70 cukup
+69 - 60 kurang
+< 59 tidak lulus
+*/
+
+class Peserta {
+    constructor(nama, umur, proglat, nilai){
+        this.nama = nama;
+        this.umur = umur;
+        this.proglat = proglat;
+        this.nilai = nilai;
+    }
+    // method menentukan predikat nilai
+    cekNilai() {
+        if(this.nilai >= 90) {
+            console.log(`Nilai : ${this.nilai}, Keterangan: Sangat Baik`);
+        } else if(this.nilai >= 80) {
+            console.log(`Nilai : ${this.nilai}, Keterangan: Baik`);
+        } else if(this.nilai >= 70) {
+            console.log(`Nilai : ${this.nilai}, Keterangan: Cukup`);
+        } else if(this.nilai >= 60) {
+            console.log(`Nilai : ${this.nilai}, Keterangan: Kurang`);
+        } else {
+            console.log(`Nilai : ${this.nilai}, Keterangan: Tidak Lulus`);
+
+        }
+    }
+}
+
+// instantiate
+var peserta1 = new Peserta('Daisy', 20, 'pbl Web', 90),
+    peserta2 = new Peserta('Rose', 20, 'pbl Web', 87),
+    peserta3 = new Peserta('Sunny', 20, 'pbl Web', 77),
+    peserta4 = new Peserta('lina', 20, 'pbl Web', 65),
+    peserta5 = new Peserta('dhea', 20, 'pbl Web', 50);
+
+
+// tampilkan
+peserta1.cekNilai();
+peserta2.cekNilai();
+peserta3.cekNilai();
+peserta4.cekNilai();
+peserta5.cekNilai();
+
+
