@@ -10,7 +10,7 @@ class Car {
 var mobil1 = new Car();
 console.log(mobil1.sound());
 
-console.log();
+console.log(); // satu baris kosong
 
 // method dengan parameter
 class Car2 {
@@ -24,6 +24,7 @@ class Car2 {
 // instantiate
 var mobil2 = new Car2();
 console.log(mobil2.sound("Haiii"));
+console.log(); // satu baris kosong
 
 
 // class dengan percabangan
@@ -52,6 +53,8 @@ class Laptop {
 const laptop1 = new Laptop("Asus", 90);
 // untuk menampilkan langsung panggil method karena di dalamnya sudah ada console.log
 laptop1.cekBaterai();
+console.log(); // satu baris kosong
+
 
 
 
