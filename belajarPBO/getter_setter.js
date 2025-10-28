@@ -28,3 +28,5 @@ orang1.nama = "Yiswi"
 console.log(orang1.nama);
 
 
+// latihan getter - setter
+// yg method cekNilai() atur agar ga bisa input nilai selain 0-100
