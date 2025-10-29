@@ -19,10 +19,14 @@ class Laptop {
         } else {
             diskon = 0; // tidak dapat diskon
         }
-        console.log(`Total Harga: ${this.totalHarga}`);
-        console.log(`Dapat diskon: ${diskon * 100} %`);
+        let totalDiskon = this.totalHarga * diskon;
+        let totalHargaSetelahDiskon = this.totalHarga - totalDiskon;
+
         
-        // console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${Math.round(this.nilai)}, Keterangan: ${ket}`);
+        console.log(`Total Harga: ${this.totalHarga}`);
+        console.log(`Dapat Diskon: ${diskon * 100} %`);
+        console.log(`Total Diskon: ${totalDiskon}`);
+        console.log(`Total Harga setelah Diskon: ${totalHargaSetelahDiskon}`);
     }
 }
 
