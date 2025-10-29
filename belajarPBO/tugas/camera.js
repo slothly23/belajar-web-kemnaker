@@ -1,4 +1,4 @@
-class Laptop {
+class Camera {
     constructor(brand, jumlahBarang, totalHarga) {
         this.brand = brand;
         this.totalHarga = totalHarga;
@@ -39,4 +39,4 @@ class Laptop {
 
 
 
-module.exports = Laptop;
+module.exports = Camera;
