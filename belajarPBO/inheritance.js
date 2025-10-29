@@ -34,3 +34,111 @@ parent1.parentSay();
 
 var child1 = new Child("Hello", "Nilam");
 child1.childSay();
+console.log("=========================================");
+console.log();
+
+
+
+// Latihan inheritance
+    // yg method cekNilai() di parent, TIK (jurusan)
+    // nama, umur, proglat di child
+
+// -- program studi --
+// child satu web, nilai rata-rata (3 matkul)
+// child satu kontenVisual, nilai rata-rata (2 matkul)
+
+// nilai panggil dari method parent
+
+
+// parent class, hitung nilai siswa jurusan TIK
+class Tik {
+    constructor(nama, umur, proglat, nilai) {
+        this.nama = nama;
+        this.umur = umur;
+        this.proglat = proglat;
+        this.nilai = nilai; 
+    }
+
+    cekNilai() {
+        let ket = ""
+
+        if (this.nilai >= 90) {
+            ket = "Sangat Baik";
+        } else if (this.nilai >= 80) {
+            ket = "Baik";
+        } else if (this.nilai >= 70) {
+            ket = "Cukup";
+        } else if (this.nilai >= 60) {
+            ket = "Kurang";
+        } else {
+            ket = "Tidak Lulus";
+        }
+        // return ket;
+        console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${this.nilai.toFixed(2)}, Keterangan: ${ket}`);
+    }
+}
+
+
+// child 1
+class Web extends Tik{
+    // nilai ga usah ditambahkan ke properti constructor karena ga diinput dari class child
+    constructor(nama, umur, proglat, nDatabase, nJavascript, nSql) {
+        // penulisan properti harus urut sama persis yang ada di parent
+        super(nama, umur, proglat); 
+        this.nDatabase = nDatabase;
+        this.nJavascript = nJavascript;
+        this.nSql = nSql;
+    }
+
+    // method web, cari nilai rata-rata
+    nilaiAkhir() {
+        this.nilai = (this.nDatabase + this.nJavascript + this.nSql) / 3;
+        this.cekNilai(); // panggil method dari parent
+    }
+}
+
+// child 2
+class KontenVisual extends Tik{
+    // nilai ga usah ditambahkan ke properti constructor karena ga diinput dari class child
+    constructor(nama, umur, proglat, nCopywriting, nVideo) {
+        // penulisan properti harus urut sama persis yang ada di parent
+        super(nama, umur, proglat); 
+        this.nCopywriting = nCopywriting;
+        this.nVideo = nVideo;
+    }
+
+    // method konten visual, cari nilai rata-rata
+    nilaiAkhir() {
+        this.nilai = (this.nCopywriting + this.nVideo) / 2;
+        this.cekNilai(); // panggil method dari parent
+    }
+}
+
+// instantiate peserta kelas web
+var peserta1 = new Web("Dina", 20, "Web", 60, 70, 80); 
+var peserta2 = new Web("Lia", 21, "Web", 60, 45, 80); 
+
+// instantiate peserta kelas konten visual
+var peserta3 = new KontenVisual("Andi", 19, "Konten Visual", 100, 80); 
+var peserta4 = new KontenVisual("Sinta", 18, "Konten Visual", 40, 50); 
+
+
+// tampilkan
+peserta1.nilaiAkhir();
+peserta2.nilaiAkhir();
+peserta3.nilaiAkhir();
+peserta4.nilaiAkhir();
+
+
+
+
+
+
+
+
+
+// // instantiate
+// var peserta1 = new Tik(90); // otomatis ditolak dan diset ke 0
+
+// // tampilkan
+// peserta1.cekNilai();
