@@ -17,11 +17,13 @@
 
 const Laptop = require('./laptop.js');
 const Asus = require('./lp_asus.js');
+const Toshiba = require('./lp_toshiba.js');
 
 
-
-// var laptop1 = new Laptop("Asus", 24000000);
-// laptop1.cekDiskon();
-
+// instantiate
 var laptop1 = new Asus("Asus", 24000000, 2);
+var laptop2 = new Toshiba("Toshiba L002", 7000000, 1);
+
+// tampilkan hasil
 laptop1.cekTotalHarga();
+laptop2.cekTotalHarga();

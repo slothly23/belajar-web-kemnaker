@@ -1,7 +1,8 @@
 class Laptop {
-    constructor(brand, totalHarga) {
+    constructor(brand, jumlahBarang, totalHarga) {
         this.brand = brand;
         this.totalHarga = totalHarga;
+        this.jumlahBarang =jumlahBarang;
     }
 
     cekDiskon() {
@@ -22,11 +23,17 @@ class Laptop {
         let totalDiskon = this.totalHarga * diskon;
         let totalHargaSetelahDiskon = this.totalHarga - totalDiskon;
 
-        
+        console.log("==========================================================");
+        console.log(`Brand: ${this.brand}`);
+        console.log(`Jumlah unit: ${this.jumlahBarang}`);
         console.log(`Total Harga: ${this.totalHarga}`);
         console.log(`Dapat Diskon: ${diskon * 100} %`);
         console.log(`Total Diskon: ${totalDiskon}`);
         console.log(`Total Harga setelah Diskon: ${totalHargaSetelahDiskon}`);
+        console.log("==========================================================");
+        console.log();
+        
+        
     }
 }
 

@@ -1,6 +1,6 @@
 const Laptop = require("./laptop");
 
-class Asus extends Laptop {
+class Toshiba extends Laptop {
     constructor(brand, harga, jumlahBarang) {
         super(brand, jumlahBarang);
         this.harga = harga;
@@ -12,4 +12,4 @@ class Asus extends Laptop {
     }
 }
 
-module.exports = Asus;
+module.exports = Toshiba;
