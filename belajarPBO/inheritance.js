@@ -74,8 +74,8 @@ class Tik {
             ket = "Tidak Lulus";
         }
 
-        console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${this.nilai.toFixed(2)}, Keterangan: ${ket}`);
-        // .toFixed(2) => pembulatan sampai 2 angka dibelangkang koma
+        console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${Math.round(this.nilai)}, Keterangan: ${ket}`);
+        // .toFixed(2) => pembulatan sampai 2 angka dibelangkang koma => hasilnya string jadi ganti method Math.round()
     }
 }
 
