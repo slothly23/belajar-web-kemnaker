@@ -26,5 +26,6 @@ class Laptop {
     }
 }
 
-// var laptop1 = new Laptop("Asus", 24000000);
-// laptop1.cekDiskon();
+
+
+module.exports = Laptop;

@@ -14,3 +14,8 @@
 // data customer, pake package
 
 // PBO > folder : namaPeserta_PBO 
+
+const Laptop = require('./laptop.js');
+
+var laptop1 = new Laptop("Asus", 24000000);
+laptop1.cekDiskon();
