@@ -75,7 +75,7 @@ class Tik {
         }
 
         console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${this.nilai.toFixed(2)}, Keterangan: ${ket}`);
-        // .toFixed(2) => 2 angka dibelangkang koma
+        // .toFixed(2) => pembulatan sampai 2 angka dibelangkang koma
     }
 }
 
