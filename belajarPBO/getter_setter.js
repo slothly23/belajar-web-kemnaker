@@ -66,7 +66,6 @@ class Peserta {
             ket = "Kurang";
         } else {
             ket = "Tidak Lulus";
-
         }
 
         console.log(`Nama : ${this.nama}, Nilai : ${this._nilai}, Keterangan: ${ket}`);
@@ -74,7 +73,7 @@ class Peserta {
 }
 
 // instantiate
-var peserta1 = new Peserta('Daisy', 20, 'pbl Web', 190); // otomatis ditolak dan diset ke 0
+var peserta1 = new Peserta('Daisy', 20, 'pbl Web', -190); // otomatis ditolak dan diset ke 0
 
 // tampilkan
 peserta1.cekNilai();
