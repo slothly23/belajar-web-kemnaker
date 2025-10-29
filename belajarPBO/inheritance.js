@@ -73,18 +73,17 @@ class Tik {
         } else {
             ket = "Tidak Lulus";
         }
-        // return ket;
+
         console.log(`Nama: ${this.nama}, Umur: ${this.umur}, Program Pelatihan: ${this.proglat}, Nilai: ${this.nilai.toFixed(2)}, Keterangan: ${ket}`);
+        // .toFixed(2) => 2 angka dibelangkang koma
     }
 }
 
 
 // child 1
 class Web extends Tik{
-    // nilai ga usah ditambahkan ke properti constructor karena ga diinput dari class child
-    constructor(nama, umur, proglat, nDatabase, nJavascript, nSql) {
-        // penulisan properti harus urut sama persis yang ada di parent
-        super(nama, umur, proglat); 
+    constructor(nama, umur, proglat, nDatabase, nJavascript, nSql) { // nilai ga usah ditambahkan ke properti constructor karena ga diinput dari class child
+        super(nama, umur, proglat); // urutan parameter harus sama persis dengan parent
         this.nDatabase = nDatabase;
         this.nJavascript = nJavascript;
         this.nSql = nSql;
@@ -99,46 +98,30 @@ class Web extends Tik{
 
 // child 2
 class KontenVisual extends Tik{
-    // nilai ga usah ditambahkan ke properti constructor karena ga diinput dari class child
     constructor(nama, umur, proglat, nCopywriting, nVideo) {
-        // penulisan properti harus urut sama persis yang ada di parent
         super(nama, umur, proglat); 
         this.nCopywriting = nCopywriting;
         this.nVideo = nVideo;
     }
 
-    // method konten visual, cari nilai rata-rata
+    // method konten visual
     nilaiAkhir() {
         this.nilai = (this.nCopywriting + this.nVideo) / 2;
         this.cekNilai(); // panggil method dari parent
     }
 }
 
-// instantiate peserta kelas web
+// buat object Web
 var peserta1 = new Web("Dina", 20, "Web", 60, 70, 80); 
 var peserta2 = new Web("Lia", 21, "Web", 60, 45, 80); 
 
-// instantiate peserta kelas konten visual
+// buat object Web
 var peserta3 = new KontenVisual("Andi", 19, "Konten Visual", 100, 80); 
 var peserta4 = new KontenVisual("Sinta", 18, "Konten Visual", 40, 50); 
 
 
-// tampilkan
-peserta1.nilaiAkhir();
+// tampilkan hasil
+peserta1.nilaiAkhir(); // panggil method dari class child
 peserta2.nilaiAkhir();
 peserta3.nilaiAkhir();
 peserta4.nilaiAkhir();
-
-
-
-
-
-
-
-
-
-// // instantiate
-// var peserta1 = new Tik(90); // otomatis ditolak dan diset ke 0
-
-// // tampilkan
-// peserta1.cekNilai();
