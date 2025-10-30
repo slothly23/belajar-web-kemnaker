@@ -4,9 +4,7 @@ var books = [
     {name: 'LOTR', timeSpent: 3000},
     {name: 'Fidas', timeSpent: 2000},
     {name: 'Kalkulus', timeSpent: 4000},
-    {name: 'Komik', timeSpent: 1000},
-    {name: 'novel', timeSpent: 1000}
-
+    {name: 'Komik', timeSpent: 2000}
 ]
 
 
@@ -22,12 +20,27 @@ var books = [
 // });
 
 
+// function readAllBooks(index, time) {
+//   if (index < books.length) {
+//     readBooks(time, books[index], function (sisaWaktu) {
+//       // lanjut ke buku berikutnya pakai sisa waktu
+//       readAllBooks(index + 1, sisaWaktu);
+//     });
+//   } 
+// }
+
+// cara bu chika
 function readAllBooks(index, time) {
-  if (index < books.length) {
-    readBooks(time, books[index], function (sisaWaktu) {
-      // lanjut ke buku berikutnya pakai sisa waktu
-      readAllBooks(index + 1, sisaWaktu);
-    });
+  if (index < books.length && time > 0) {
+    const book = books[index];
+    if (time >= book.timeSpent) {
+      readBooks(time, book, (sisa) => readAllBooks(index + 1, sisa));
+    } else {
+      console.log(`Waktu ${time}ms tidak cukup untuk ${book.name}`);
+      console.log("proses berhenti");
+    }
+  } else {
+    console.log("semua buku sudah dibaca");
   } 
 }
 
