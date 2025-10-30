@@ -1,4 +1,4 @@
-var filterCarsPromise = require('./promise3.js');
+var filterCarsPromise = require('../promise3.js');
 
 filterCarsPromise("black", 2019)
     .then(result => console.log(result))
