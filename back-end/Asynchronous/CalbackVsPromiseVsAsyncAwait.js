@@ -48,6 +48,7 @@ chain.then(() => {
     console.log("Semua pasien sudah dipanggil");
 })
 
+
 //async await menggantikan then catch
 async function jalankanAntrian() {
     await panggilPasienPromise(1);
