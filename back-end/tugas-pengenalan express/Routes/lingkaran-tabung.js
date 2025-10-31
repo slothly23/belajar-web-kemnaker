@@ -4,17 +4,24 @@ const router = express.Router();
 // menampilkan data hasil perhitungan, GET, /lingkaran-tabung/:jarijari/:tinggi
 router.get('/:jarijari/:tinggi', (req, res) => {
     const pi = 3.14;
-    const jariJari = parseInt(req.params.jarijari);
-    const tinggi = parseInt(req.params.tinggi);
+    const jariJari = Number(req.params.jarijari);
+    const tinggi = Number(req.params.tinggi);;
 
-    let LuasLingkaran = pi * jariJari * jariJari;
-    let KelLingkaran = 2 * pi * jariJari;
-    let VolumeTabung = pi * jariJari * jariJari * tinggi;
+    // Validasi input
+    if (isNaN(jariJari) || isNaN(tinggi)) {
+        res.status(400).send("Input harus berupa angka untuk jari-jari dan tinggi.");
+        return;
+    }
+
+    // Perhitungan
+    let luasLingkaran = pi * jariJari * jariJari;
+    let kelLingkaran = 2 * pi * jariJari;
+    let volumeTabung = pi * jariJari * jariJari * tinggi;
 
     res.send(`
         jari-jari: ${jariJari}, tinggi: ${tinggi} 
-        luas lingkaran: ${LuasLingkaran}, keliling lingkaran : ${KelLingkaran} 
-        volume tabung : ${VolumeTabung}`);
+        luas lingkaran: ${luasLingkaran.toFixed(2)}, keliling lingkaran : ${kelLingkaran.toFixed(2)} 
+        volume tabung : ${volumeTabung.toFixed(2)}`);
 
 })
 
