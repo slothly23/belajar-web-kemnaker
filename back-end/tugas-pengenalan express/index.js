@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+lingkaranTabungRoute = require('./Routes/lingkaran-tabung');
+
 // middleware global untuk parsing json
 app.use(express.json());
+
+app.use('/lingkaran-tabung',lingkaranTabungRoute);
 
 // menjalankan server di port mana
 app.listen(port, () => {
