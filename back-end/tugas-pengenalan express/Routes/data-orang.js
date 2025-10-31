@@ -70,6 +70,11 @@ router.get('/', (req, res) => {
         hasil = hasil.filter(m => m.jenisKelamin.toLowerCase() === gender.toLowerCase());
     }
 
+    // jika tidak ada hasil
+    if (hasil.length === 0) {
+        return res.send("Tidak ada data yang sesuai")
+    }
+
     // format output
     const output = hasil.map((m, index) => {
         return `${index + 1}. ${m.name} - pekerjaan: ${m.pekerjaan} - umur: ${m.umur} tahun`;
@@ -102,16 +107,20 @@ router.get('/:id', (req, res) => {
     }
 
     // Tentukan sapaan berdasarkan jenis kelamin
-    let sapaan = "";
-    if (orang.jenisKelamin === "L") {
-        sapaan = "Pak";
-    } else {
-        sapaan = "Bu";
-    };
+    // let sapaan = "";
+    // if (orang.jenisKelamin === "L") {
+    //     sapaan = "Pak";
+    // } else {
+    //     sapaan = "Bu";
+    // };
+
+    // bentuk ternary operator
+    // Tentukan sapaan berdasarkan jenis kelamin
+    const sapaan = orang.jenisKelamin === "L" ? "Pak" : "Bu";
 
     // Bentuk kalimat sesuai format
     const kalimat = sapaan + " " + orang.name + 
-        " adalah seorang " + orang.pekerjaan.toLowerCase() + 
+        " adalah seorang " + orang.pekerjaan + 
         " yang berusia " + orang.umur + " tahun.";
 
     // Kirim hasil ke browser
