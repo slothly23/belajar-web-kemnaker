@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const moviesRoutes = require('./Routes/movie'); // ./ untuk pindah folder
+
 // middleware global untuk parsing json
 app.use(express.json());
+
+app.use('/api/movies', moviesRoutes);
 
 // route sederhana
 app.get('/', (req, res) => {
