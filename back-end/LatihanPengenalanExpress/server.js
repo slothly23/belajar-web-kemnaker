@@ -7,7 +7,8 @@ const moviesRoutes = require('./Routes/movie'); // ./ untuk pindah folder
 // middleware global untuk parsing json
 app.use(express.json());
 
-app.use('/api/movies', moviesRoutes);
+app.use('/api/movies', moviesRoutes); //mendefinisikan route default? dan menamnahkan route dari file movie.js di folder Router
+// /api/movies => path global
 
 // route sederhana
 app.get('/', (req, res) => {
