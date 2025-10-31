@@ -1,7 +1,7 @@
 const express = require('express'); // import express dari node_modules
 const router = express.Router();
 
-
+// menampilkan data hasil perhitungan, GET, /lingkaran-tabung/:jarijari/:tinggi
 router.get('/:jarijari/:tinggi', (req, res) => {
     const pi = 3.14;
     const jariJari = parseInt(req.params.jarijari);
