@@ -75,6 +75,7 @@ router.get('/', (req, res) => {
         return `${index + 1}. ${m.name} - pekerjaan: ${m.pekerjaan} - umur: ${m.umur} tahun`;
     });
 
+    // Kirim hasil ke browser
     res.send(output.join(`
         `));
 });
@@ -85,17 +86,36 @@ router.get('/', (req, res) => {
 // /data-orang/1
 // mau menampilkan "pak john adalah seorang penulis yang berusia 30 tahun"
 
-// menampilkan data tertentu, GET, /data-orang/:id
-router.get('/:id', (req, res) => { // pakai request params id
-    const orang = dataOrang.find(m => m.id === parseInt(req.params.id));  // parseInt(req.params.id) : biasanya hasil req itu string, ubah ke integer
+router.get('/:id', (req, res) => {
+    // Ambil parameter ID dari URL
+    const id = parseInt(req.params.id);
 
-    // cek array orang kosong atau tidak
+    // Cari data orang berdasarkan id
+    const orang = dataOrang.find((m) => {
+        return m.id === id;
+    });
+
+    // Jika data tidak ditemukan
     if (!orang) {
-        return res.status(404).send("Maaf data tidak ditemukan");
-    } else {
-        // /data-orang/1
-        // mau menampilkan "pak john adalah seorang penulis yang berusia 30 tahun"
+        res.status(404).send("Maaf, data tidak ditemukan");
+        return; // berhenti di sini
     }
+
+    // Tentukan sapaan berdasarkan jenis kelamin
+    let sapaan = "";
+    if (orang.jenisKelamin === "L") {
+        sapaan = "Pak";
+    } else {
+        sapaan = "Bu";
+    };
+
+    // Bentuk kalimat sesuai format
+    const kalimat = sapaan + " " + orang.name + 
+        " adalah seorang " + orang.pekerjaan.toLowerCase() + 
+        " yang berusia " + orang.umur + " tahun.";
+
+    // Kirim hasil ke browser
+    res.send(kalimat);
 });
 
 
