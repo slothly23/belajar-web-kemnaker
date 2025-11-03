@@ -3,18 +3,19 @@ const prisma = require('../config/utils');
 
 // buat CRUD
 
-// Read : mngambil semua movie
+// Read : mengambil semua movie
 // pake async await : best practice
 const getAllMovies = async (req, res) => {
     try {
         const movies = await prisma.movie.findMany({
-            include : {category : true}
+            include : {category : true} // sertakan data kategori jika ada, boleh kosong
         }); // cari semua movie
         return res.json(movies); // kembalikan hasil filter agar tampil
     } catch (error) {
         console.error(error); // tampilkan error
-        // kalau ga tau errornya apa arahkan ke pesan "internal server error"
         return res.status(500).json({ message: "internal server error" });
+        // kalau ga tau errornya apa arahkan ke pesan "internal server error"
+        // artinya kesalahan ada di codingan backend di folder src
     }
 }
 
@@ -23,12 +24,13 @@ const getAllMovies = async (req, res) => {
 const getMovieById = async (req, res) => {
     try {
         const id = parseInt(req.params.id); // ngambil id dari url
-        const movie = await prisma.movie.findUnique({
+        const movie = await prisma.movie.findUnique({ // findUnique: mencari satu data
             where : {id},
             include : {category: true}
         });
 
         // kalau tidak ada data movie yg sesuai
+        // !movie: movie ga ada 
         if (!movie) {
             return res.status(404).json({message: "movie not found"})
         } else {
@@ -44,14 +46,15 @@ const getMovieById = async (req, res) => {
 // Create Movie
 const createMovie = async (req, res) => {
     try {
-        const {title, year, categoryId} = req.body; // ngambil data dari inputan
-        const data = {title, year : parseInt(year)}
+        const {title, year, categoryId} = req.body; // ngambil data dari inputan di request body
+        const data = {title, year : parseInt(year)}; // tampung inputan ke variabel data
 
+        // cek jika ada kategori
         if (categoryId !== undefined && categoryId !== null) {
             data.categoryId = parseInt(categoryId);
         }
 
-        //masukkan data 
+        //buat data movie baru ke db 
         const movieBaru = await prisma.movie.create({
             data,
             include : {category : true} // bisa kosong makannya ditulis include kalau ada
