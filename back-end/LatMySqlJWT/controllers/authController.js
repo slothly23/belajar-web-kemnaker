@@ -2,7 +2,6 @@
 const pool = require('../config/db'); // butuh konfigurasi database
 const bycrpt = require('bcrypt'); // untuk hash password yg disimpan ke db
 const jwt = require('jsonwebtoken');
-const { use } = require('react');
 
 require('dotenv').config(); // akses JWT_SECRET
 
