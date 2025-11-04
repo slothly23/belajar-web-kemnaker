@@ -7,7 +7,7 @@ module.exports = {
             //join category to get category name
             const [rows] = await pool.execute(
                 `SELECT m.*, c.name AS categoryName
-                FRON movies m
+                FROM movies m
                 LEFT JOIN categories c ON m.categoryId = c.id
                 ORDER BY m.id DESC`
             );

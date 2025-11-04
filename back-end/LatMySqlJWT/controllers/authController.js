@@ -60,7 +60,7 @@ module.exports = {
             const user = rows[0];
 
             //bandingkan password
-            const match = await bycrpt.compare(password, user,password);
+            const match = await bycrpt.compare(password, user.password);
             if(!match) return res.status(401).json({ message: 'invalid credentials'});
 
             // sign JWT (jangan simpan pass di token)
