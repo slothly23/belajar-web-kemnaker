@@ -6,12 +6,12 @@ const app = express();
 const movieRoutes =require('./routes/movieRoutes');
 const categoryRoutes =require('./routes/categoryRoutes');
 
-// middleware global
 app.use(cors());  // enable CORS untuk semua origin
 // app.use(cors()); -> aktifkan CORS (default: semua origin diperbolehkan)
 // kalau ga pakai cors berarti memperbolehkan akses dari semua origin
 // berguna saat frontend di origin berbeda
 
+// middleware global
 app.use(express.json()); // parse JSON body
 
 // prefix API
