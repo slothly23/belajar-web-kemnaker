@@ -1,3 +1,4 @@
+import Counter from "./components/Counter";
 import Halo from "./components/Halo" // import component Hallo dari folder components, file Hallo.jsx
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <h1>Latihan Komponen di React (Vite)</h1>
       <Halo nama="Zalia"/> {/* memanggil component Hallo untuk ditampilkan */}
       <Halo nama="Tech"/> {/* masukin nilai nama */}
+      <Counter />
     </div>
   )
 }
