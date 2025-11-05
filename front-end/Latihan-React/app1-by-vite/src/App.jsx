@@ -7,10 +7,10 @@ function App() {
   return (
     <div>
       <h1>Latihan Komponen di React (Vite)</h1>
-      <Halo/> {/* memanggil component Hallo untuk ditampilkan */}
-      
+      <Halo nama="Zalia"/> {/* memanggil component Hallo untuk ditampilkan */}
+      <Halo nama="Tech"/> {/* masukin nilai nama */}
     </div>
   )
 }
 
-export default App
+export default App;
