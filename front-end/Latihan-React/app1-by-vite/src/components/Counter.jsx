@@ -3,7 +3,7 @@ import { useState } from "react";
 // latihan useState
 function Counter() {
     const [count, setCount] = useState(0);
-    // count : variabel Tempat data tersimpan
+    // count : variabel Tempat data terakhir tersimpan
     // setCount : function untuk menubah data
     // useState(0) , 0 adalah nilai awal, dan data bisa berubah
 
