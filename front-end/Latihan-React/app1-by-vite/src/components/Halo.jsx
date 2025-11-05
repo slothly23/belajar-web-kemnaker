@@ -1,3 +1,4 @@
+import "./Halo.css"
 // menggunakan props
 // Props mirip seperti memberikan argumen pada function
 // Digunakan untuk mengoper data dari parent ke child component

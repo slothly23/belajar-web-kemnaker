@@ -2,7 +2,7 @@
 // ada component di dalam component
 function Avatar() {
     return (
-        <img src="https://cdn-icons-png.freepik.com/512/7077/7077313" alt="avatar" />
+        <img src="https://cdn-icons-png.freepik.com/512/7077/7077313.png" alt="avatar" />
     )
 }
 function Profile() {
