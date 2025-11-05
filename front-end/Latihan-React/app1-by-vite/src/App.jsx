@@ -1,34 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Halo from "./components/Halo" // import component Hallo dari folder components, file Hallo.jsx
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // return hanya bisa mengembalika 1 nilai
+  // kalau banyak nilai harus dilapisi dengan 1 nilai
+  // bisa dibungkus pake <div></div> atau tag kosong <></>
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Latihan Komponen di React (Vite)</h1>
+      <Halo/> {/* memanggil component Hallo untuk ditampilkan */}
+      
+    </div>
   )
 }
 
