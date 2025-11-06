@@ -23,7 +23,10 @@ export default function StudentTable({ students, onDelete }) {
                         <td>{student.email}</td>
                         <td>{student.alamat}</td>
                         <td>
-                            <button className="btn btn-danger btn-sm">
+                            <button 
+                                className="btn btn-danger btn-sm"
+                                onClick={() => onDelete(student.id)}
+                            >
                                 Hapus
                             </button>
                         </td>

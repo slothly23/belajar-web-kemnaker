@@ -26,6 +26,15 @@ function StudentForm({ onAdd }) {
                 type="text" 
                 className="form-control" 
                 value={nama}
+                onChange={ (e) => setNama(e.target.value) }
+                />
+        </div>
+        <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input 
+                type="email" 
+                className="form-control" 
+                value={email}
                 onChange={ (e) => setEmail(e.target.value) }
                 />
         </div>
@@ -45,4 +54,4 @@ function StudentForm({ onAdd }) {
   );
 }
 
-export default StudentForm
+export default StudentForm;
