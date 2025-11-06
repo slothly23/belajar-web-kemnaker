@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/AppRoutes'
 import StudentForm from './components/StudentForm'
+import StudentTable from './components/StudentTable'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Navbar />
         <AppRoutes />
         <StudentForm />
+        {/* <StudentTable /> */}
       </BrowserRouter>
     </div>
   )
