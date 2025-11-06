@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/AppRoutes'
+import StudentForm from './components/StudentForm'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <AppRoutes />
+        <StudentForm />
       </BrowserRouter>
     </div>
   )
