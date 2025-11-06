@@ -4,16 +4,14 @@ function Badge({ label, color = "blue" }) {
     const style = {
         backgroundColor: color,
         color: "white",
-        padding: "2px",
-        border: "none",
-        borderRadius: "20px",
-        margin: "5px",
-        textAlign: "center"
+        padding: "5px 10px",
+        borderRadius: "12px",
+        marginRight: "8px",
+        fontSize: "14px"
     };
 
     return (
-        <p style={style}>{ label }</p>
-        
+        <span style={style}>{ label }</span> 
     )
 }
 export default Badge;
