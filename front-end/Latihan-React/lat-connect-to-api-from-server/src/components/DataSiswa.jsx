@@ -14,7 +14,8 @@ export default function DataSiswa() {
     const [alamat, setAlamat] = useState("");
     const navigate = useNavigate();
 
-    // panggil fungsi fetchData menggunakan useEffect
+    // useEffect digunakan untuk memanggil fungsi fetchData() hanya sekali
+    // saat komponen pertama kali dimuat (mounted)
     useEffect(() => {
         fetchData();
     }, []); // [] artinya hanya dijalankan sekali saat render pertama
@@ -80,8 +81,7 @@ export default function DataSiswa() {
         if (!confirmDelete) return;
 
         // Jika user klik "OK", lanjut hapus data ke server menggunakan axios.delete()
-        axios.delete(`https://mytechs.my.id/data_siswa_api/apiSiswa.php?id=${id}`)
-            // ^ Kirim request DELETE ke API dengan id siswa yang dipilih
+        axios.delete(`https://mytechs.my.id/data_siswa_api/apiSiswa.php?id=${id}`)  // Kirim request DELETE ke API dengan id siswa yang dipilih
             .then(response => {
                 fetchData(); // Jika berhasil, panggil ulang fetchData() untuk memperbarui tabel
             })
@@ -126,7 +126,7 @@ export default function DataSiswa() {
                             <tbody>
                                 {students.length === 0 ? (
                                     <tr>
-                                        <td colSpan="5" className="text-center text-muted">
+                                        <td colSpan="5" className="text-center text-muted"> 
                                             Belum ada data siswa
                                         </td>
                                     </tr>
@@ -141,14 +141,14 @@ export default function DataSiswa() {
                                                 <div className='row justify-content-evenly'>
                                                     <button
                                                         className="btn btn-warning btn-sm col-4"
-                                                        onClick={() => handleEdit(student.id_siswa)}
+                                                        onClick={() => handleEdit(student.id_siswa)} // panggil handleEdit dengan id siswa dari students.map()
                                                     >
                                                         Edit
                                                     </button>
                                                     <button
                                                         className="btn btn-danger btn-sm col-4"
-                                                        onClick={() => handleDelete(student.id_siswa)}
-                                                    >
+                                                        onClick={() => handleDelete(student.id_siswa)}  // panggil handleDelete dengan id siswa dari students.map()
+                                                    > 
                                                         Hapus
                                                     </button>
                                                 </div>
