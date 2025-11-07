@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
-import StudentForm from './StudentForm'
-import StudentTable from './StudentTable'
 import { useNavigate } from 'react-router-dom'
 
 export default function DataSiswa() {
@@ -18,15 +16,15 @@ export default function DataSiswa() {
     // panggil fungsi fetchData menggunakan useEffect
     useEffect(() => {
         fetchData();
-    }, []);
+    }, []); // [] artinya hanya dijalankan sekali saat render pertama
 
-    // fungsi untuk pengambilan data, pake axios
+    // fungsi untuk mengambil data dari API menggunakan axios (metode GET)
     const fetchData = () => {
-        axios.get('https://mytechs.my.id/data_siswa_api/apiSiswa.php') // get 'endpoint'
+        axios.get('https://mytechs.my.id/data_siswa_api/apiSiswa.php') // endpoint API
             .then(response => {
                 // kalau berhasi apa yg dilakukan
-                setStudents(response.data); // masukin data dari API ke array state students | state: wadah
-                console.log('response data: ', response.data); // liat bentuk data
+                setStudents(response.data); // masukin data dari API ke state students(array) | state: wadah
+                console.log('response data: ', response.data); // tampilkan data di console
                 // console.log('response: ', response); // liat response
             })
             .catch(error => {
@@ -37,9 +35,37 @@ export default function DataSiswa() {
             })
     }
 
-    const handleSubmit = () => {
+    // Fungsi handleSubmit akan dipanggil saat form disubmit
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Mencegah perilaku default form (agar halaman tidak reload otomatis)
 
+        // Mengirim data ke API menggunakan metode POST via Axios
+        axios.post('https://mytechs.my.id/data_siswa_api/apiSiswa.php', {
+            // Data yang dikirim ke server (sesuai struktur yang diharapkan API)
+            nama_siswa: nama,     // ambil dari state "nama"
+            email_siswa: email,   // ambil dari state "email"
+            alamat_siswa: alamat  // ambil dari state "alamat"
+        })
+            // Jika permintaan berhasil (status 200)
+            .then(response => {
+                setNama(""); // Kosongkan kembali input setelah berhasil dikirim
+                setEmail("");
+                setAlamat("");
+
+                // Tampilkan respon dari server di console (untuk debugging)
+                console.log(response);
+                fetchData();
+            })
+            // .catch untuk menangani error
+            .catch(error => {
+                console.error("Gagal menyimpan data:", error);
+                alert("Gagal menyimpan data" + error.message)
+            })
+            .finally(() => {
+
+            })
     }
+
 
     const handleDelete = () => {
 
@@ -75,7 +101,7 @@ export default function DataSiswa() {
                             <tbody>
                                 {students.length === 0 ? (
                                     <tr>
-                                        <td colSpan="4" className="text-center text-muted">
+                                        <td colSpan="5" className="text-center text-muted">
                                             Belum ada data siswa
                                         </td>
                                     </tr>
@@ -90,13 +116,13 @@ export default function DataSiswa() {
                                                 <div className='row justify-content-evenly'>
                                                     <button
                                                         className="btn btn-warning btn-sm col-4"
-                                                        onClick={() => onDelete(student.id)}
+                                                        onClick={() => onDelete()}
                                                     >
                                                         Edit
                                                     </button>
                                                     <button
                                                         className="btn btn-danger btn-sm col-4"
-                                                        onClick={() => onEdit(student.id)}
+                                                        onClick={() => onEdit()}
                                                     >
                                                         Hapus
                                                     </button>
@@ -112,59 +138,55 @@ export default function DataSiswa() {
             </div>
 
             {/* modal untuk pop-up form tambah siswa */}
-            <div className="modal fade" id="TambahSiwaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="TambahSiwaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="TambahSiwaLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="TambahSiwaModal">Tambah Siswa</h1>
+                            <h1 className="modal-title fs-5" id="TambahSiwaLabel">Tambah Siswa</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleSubmit}>
                                 {/* cari di bootstrap floating label */}
-                                <div class="form-floating mb-2">
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        id="floatingNama" 
+                                <div className="form-floating mb-2">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="floatingNama"
                                         placeholder='Nama...'
                                         value={nama}
                                         onChange={(e) => setNama(e.target.value)}
                                     />
                                     <label htmlFor="floatingNama">Nama</label>
                                 </div>
-                                <div class="form-floating mb-1">
-                                    <input 
-                                        type="email" 
-                                        class="form-control" 
-                                        id="floatingEmail" 
-                                        placeholder="Email..." 
+                                <div className="form-floating mb-1">
+                                    <input
+                                        type="email"
+                                        className="form-control"
+                                        id="floatingEmail"
+                                        placeholder="Email..."
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <label htmlFor="floatingEmail">Email</label>
                                 </div>
-                                <div class="form-floating mb-2">
-                                    {/* <input type="textarea" class="form-control" id="floatingAlamat" placeholder="" /> */}
-                                    <textarea 
-                                        class="form-control" 
-                                        id="floatingAlamat" 
-                                        placeholder="Alamat..." 
+                                <div className="form-floating mb-2">
+                                    <textarea
+                                        className="form-control"
+                                        id="floatingAlamat"
+                                        placeholder="Alamat Siswa"
                                         style={{ height: "100px" }}
                                         value={alamat}
                                         onChange={(e) => setAlamat(e.target.value)}
                                     ></textarea>
                                     <label htmlFor="floatingAlamat">Alamat</label>
                                 </div>
+
                                 <button className="btn btn-primary col-12">
                                     Simpan
                                 </button>
                             </form>
                         </div>
-                        {/* <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="button" className="btn btn-primary">Oke</button>
-                        </div> */}
                     </div>
                 </div>
             </div>
