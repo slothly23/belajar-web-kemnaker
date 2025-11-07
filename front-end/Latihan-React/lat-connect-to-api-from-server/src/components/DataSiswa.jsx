@@ -3,32 +3,35 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import StudentForm from './StudentForm'
 import StudentTable from './StudentTable'
+import { useNavigate } from 'react-router-dom'
 
 export default function DataSiswa() {
     // deklarasi nilai awal students : array kosong
     const [students, setStudents] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    // nilai awal dari field-field di dalam students
+    const [nama, setNama] = useState("");
+    const [email, setEmail] = useState("");
+    const [alamat, setAlamat] = useState("");
+    const navigate = useNavigate();
 
-    // ngambil data dari localStorage
-    useEffect(() => {
-        const savedData = JSON.parse(localStorage.getItem("students")) || [];
-        setStudents(savedData);
-    }, []);
+    // fungsi untuk pengambilan data, pake axios
+    const fetchData = () => {
+        axios.get('https://mytechs.my.id/data_siswa_api/apiSiswa.php') // get 'endpoint'
+        .then(response => {
+            // kalau berhasi apa yg dilakukan
+            setStudents(response.data); // masukin data dari API ke array students
+            console.log(response);
+        })
+        .catch(error => {
+            // kalau gagal apa yg dilakukan
+        })
+        .finally(() => {
+            // setLoading(false);
+        })
+    }
 
-    // memberikan nilai baru untuk localStorage / input nilai baru
-    useEffect(() => {
-        localStorage.setItem("students", JSON.stringify(students));
-    }, [students]);
-
-    // fungsi untuk menambahkan siswa baru di awal array?, setelahnya adalah data yg sudah ada
-    const addStudent = (student) => {
-        setStudents([student, ...students]);
-    };
-
-    // fungsi untuk hapus 
-    const deleteStudent = (id) => {
-        const filtered = students.filter((student) => student.id !== id); // pilih semua yang id nya tidak sama dengan id delete
-        setStudents(filtered); // simpan yg pengecualian
-    };
+   
   return (
     <div className="container mt-5">
         <h2 className="text-center mb-4">Aplikasi Data Siswa Baru</h2>
