@@ -8,35 +8,86 @@ import { useNavigate } from 'react-router-dom'
 export default function DataSiswa() {
     // deklarasi nilai awal students : array kosong
     const [students, setStudents] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     // nilai awal dari field-field di dalam students
     const [nama, setNama] = useState("");
     const [email, setEmail] = useState("");
     const [alamat, setAlamat] = useState("");
     const navigate = useNavigate();
 
+    // panggil fungsi fetchData menggunakan useEffect
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     // fungsi untuk pengambilan data, pake axios
     const fetchData = () => {
         axios.get('https://mytechs.my.id/data_siswa_api/apiSiswa.php') // get 'endpoint'
         .then(response => {
             // kalau berhasi apa yg dilakukan
-            setStudents(response.data); // masukin data dari API ke array students
-            console.log(response);
+            setStudents(response.data); // masukin data dari API ke array state students | state: wadah
+            console.log('response data: ', response.data); // liat bentuk data
+            // console.log('response: ', response); // liat response
         })
         .catch(error => {
             // kalau gagal apa yg dilakukan
         })
         .finally(() => {
-            // setLoading(false);
+            setLoading(false);
         })
     }
 
+    
    
   return (
-    <div className="container mt-5">
-        <h2 className="text-center mb-4">Aplikasi Data Siswa Baru</h2>
-        <StudentForm onAdd={addStudent}/>
-        <StudentTable students={students} onDelete={deleteStudent}/>
+    <div className="container">
+        <div className="card mt-2">
+            <div className="card-body">
+                <button type="submit" className="btn btn-primary">
+                    Tambah Siswa
+                </button>
+
+                <hr />
+                
+                <table className="table table-bordered table-striped">
+                    <thead className="table-dark">
+                        <tr>
+                            <th scope='col'>#</th>
+                            <th scope='col'>Nama</th>
+                            <th scope='col'>Email</th>
+                            <th scope='col'>Alamat</th>
+                            <th scope='col'>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { students.length === 0 ? (
+                            <tr>
+                                <td colSpan="4" className="text-center text-muted">
+                                    Belum ada data siswa
+                                </td>
+                            </tr>
+                        ) : (
+                            students.map((student, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{student.nama_siswa}</td>
+                                    <td>{student.email_siswa}</td>
+                                    <td>{student.alamat_siswa}</td>
+                                    <td>
+                                        {/* <button 
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => onDelete(student.id)}
+                                        >
+                                            Hapus
+                                        </button> */}
+                                    </td>
+                                </tr>
+                            ))
+                        ) }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
   )
 }
