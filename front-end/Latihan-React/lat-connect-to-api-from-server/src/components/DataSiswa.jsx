@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Modal } from 'bootstrap/dist/js/bootstrap.min'
 
 export default function DataSiswa() {
     // deklarasi nilai awal students : array kosong
@@ -62,13 +63,37 @@ export default function DataSiswa() {
                 alert("Gagal menyimpan data" + error.message)
             })
             .finally(() => {
-
+                // Bagian ini dijalankan setelah proses selesai
+                // tutup modal
             })
     }
 
 
-    const handleDelete = () => {
+    // Fungsi untuk menghapus data siswa berdasarkan id
+    const handleDelete = (id) => {
+        // Tampilkan pop-up konfirmasi sebelum menghapus data
+        const confirmDelete = window.confirm(
+            "Apakah kamu yakin akan menghapus data ini?"
+        );
 
+        // Jika user klik "Cancel", hentikan fungsi (tidak jadi hapus)
+        if (!confirmDelete) return;
+
+        // Jika user klik "OK", lanjut hapus data ke server menggunakan axios.delete()
+        axios.delete(`https://mytechs.my.id/data_siswa_api/apiSiswa.php?id=${id}`)
+            // ^ Kirim request DELETE ke API dengan id siswa yang dipilih
+            .then(response => {
+                fetchData(); // Jika berhasil, panggil ulang fetchData() untuk memperbarui tabel
+            })
+            .catch(error => {
+                // Jika terjadi error (misal server tidak merespons)
+                console.error("Gagal menghapus data:" + error);
+                alert("Terjadi kesalahan saat menghapus data");
+            })
+            .finally(() => {
+                // Bagian ini dijalankan setelah proses selesai (berhasil/gagal)
+                console.log("Proses hapus data selesai.");
+            })
     }
 
     const handleEdit = () => {
@@ -116,13 +141,13 @@ export default function DataSiswa() {
                                                 <div className='row justify-content-evenly'>
                                                     <button
                                                         className="btn btn-warning btn-sm col-4"
-                                                        onClick={() => onDelete()}
+                                                        onClick={() => handleEdit(student.id_siswa)}
                                                     >
                                                         Edit
                                                     </button>
                                                     <button
                                                         className="btn btn-danger btn-sm col-4"
-                                                        onClick={() => onEdit()}
+                                                        onClick={() => handleDelete(student.id_siswa)}
                                                     >
                                                         Hapus
                                                     </button>
