@@ -37,6 +37,17 @@ export default function DataSiswa() {
             })
     }
 
+    const handleSubmit = () => {
+
+    }
+
+    const handleDelete = () => {
+
+    }
+
+    const handleEdit = () => {
+
+    }
 
 
     return (
@@ -44,15 +55,15 @@ export default function DataSiswa() {
             <div className="container">
                 <div className="card mt-2">
                     <div className="card-body">
-                        {/* tomol modal */}
-                        <button type="button" className="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#TambahiswaModal">
+                        {/* tombol modal */}
+                        <button type="button" className="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#TambahSiwaModal">
                             Tambah Siswa
                         </button>
 
                         <hr />
 
                         <table className="table table-bordered table-striped">
-                            <thead className="table-dark">
+                            <thead className="table-dark text-center">
                                 <tr>
                                     <th scope='col'>#</th>
                                     <th scope='col'>Nama</th>
@@ -71,17 +82,25 @@ export default function DataSiswa() {
                                 ) : (
                                     students.map((student, index) => (
                                         <tr key={index}>
-                                            <td>{index + 1}</td>
+                                            <td className='text-center'>{index + 1}</td>
                                             <td>{student.nama_siswa}</td>
                                             <td>{student.email_siswa}</td>
                                             <td>{student.alamat_siswa}</td>
                                             <td>
-                                                {/* <button 
-                                                className="btn btn-danger btn-sm"
-                                                onClick={() => onDelete(student.id)}
-                                            >
-                                                Hapus
-                                            </button> */}
+                                                <div className='row justify-content-evenly'>
+                                                    <button
+                                                        className="btn btn-warning btn-sm col-4"
+                                                        onClick={() => onDelete(student.id)}
+                                                    >
+                                                        Edit
+                                                    </button>
+                                                    <button
+                                                        className="btn btn-danger btn-sm col-4"
+                                                        onClick={() => onEdit(student.id)}
+                                                    >
+                                                        Hapus
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))
@@ -91,21 +110,61 @@ export default function DataSiswa() {
                     </div>
                 </div>
             </div>
-         
-            <div className="modal fade" id="TambahiswaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+            {/* modal untuk pop-up form tambah siswa */}
+            <div className="modal fade" id="TambahSiwaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="TambahiswaModal">Modal title</h1>
+                            <h1 className="modal-title fs-5" id="TambahSiwaModal">Tambah Siswa</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            <form onSubmit={handleSubmit}>
+                                {/* cari di bootstrap floating label */}
+                                <div class="form-floating mb-2">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="floatingNama" 
+                                        placeholder='Nama...'
+                                        value={nama}
+                                        onChange={(e) => setNama(e.target.value)}
+                                    />
+                                    <label htmlFor="floatingNama">Nama</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input 
+                                        type="email" 
+                                        class="form-control" 
+                                        id="floatingEmail" 
+                                        placeholder="Email..." 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                    <label htmlFor="floatingEmail">Email</label>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    {/* <input type="textarea" class="form-control" id="floatingAlamat" placeholder="" /> */}
+                                    <textarea 
+                                        class="form-control" 
+                                        id="floatingAlamat" 
+                                        placeholder="Alamat..." 
+                                        style={{ height: "100px" }}
+                                        value={alamat}
+                                        onChange={(e) => setAlamat(e.target.value)}
+                                    ></textarea>
+                                    <label htmlFor="floatingAlamat">Alamat</label>
+                                </div>
+                                <button className="btn btn-primary col-12">
+                                    Simpan
+                                </button>
+                            </form>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Understood</button>
-                        </div>
+                        {/* <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" className="btn btn-primary">Oke</button>
+                        </div> */}
                     </div>
                 </div>
             </div>
