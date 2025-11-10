@@ -17,8 +17,6 @@ function Navbar() {
                         {/* pengganti <a> di html */}
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         <Link className="nav-link" to="/data-siswa">Data Siswa</Link>
-                        {/* <Link className="nav-link" to="/about">About</Link>
-                        <Link className="nav-link" to="/contact">Contact</Link> */}
                     </div>
                 </div>
             </div>

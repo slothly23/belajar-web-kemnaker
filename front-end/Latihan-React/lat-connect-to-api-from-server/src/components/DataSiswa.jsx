@@ -96,8 +96,9 @@ export default function DataSiswa() {
             })
     }
 
-    const handleEdit = () => {
-
+    // fungsi untuk menampilkan form edit data siswa sesuai id
+    const handleEdit = (id) => {
+        navigate(`/edit-siswa/${id}`); // nambahin id ke url, ntar id bisa dipakai di halaman baru untuk get data dari api
     }
 
 

@@ -5,6 +5,7 @@ import Home from "../components/pages/Home";
 import Contact from "../components/pages/Contact";
 import About from "../components/pages/About";
 import DataSiswa from "../components/DataSiswa";
+import EditSiswa from "../components/EditSiswa";
 
 
 function AppRoutes() {
@@ -15,6 +16,7 @@ function AppRoutes() {
             <Route path='/about' element={<About/>}/>
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/data-siswa' element={<DataSiswa />}/>
+            <Route path='/edit-siswa/:id' element={<EditSiswa />}/> 
         </Routes>
     )
 }
