@@ -16,7 +16,7 @@ function EditMovie() {
 
     // mengambil 1 data dari api berdasarkan id
     const fetchDataById = () => {
-        axios.get(`http://pblweb0304.cloud:3000/api/movies/${id}`)
+        axios.get(`/api/movies/${id}`)
             .then(response => {
                 console.log('response data: ', response.data); // jangan [0] dulu
                 const movie = response.data; // ambil langsung objek movie
@@ -43,7 +43,7 @@ function EditMovie() {
 
 
         // Mengirim data ke API menggunakan metode PUT via Axios
-        axios.put(`http://pblweb0304.cloud:3000/api/movies/${id}`, payload)
+        axios.put(`/api/movies/${id}`, payload)
             .then(response => {
                 console.log(response);
                 var message = response.data.message

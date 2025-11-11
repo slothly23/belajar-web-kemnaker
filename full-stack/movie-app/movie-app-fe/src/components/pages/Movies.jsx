@@ -19,7 +19,7 @@ function Movies() {
     }, []); // [] artinya hanya dijalankan sekali saat render pertama
 
     const fetchData = () => {
-        axios.get('http://pblweb0304.cloud:3000/api/movies')
+        axios.get('/api/movies') // awalnya : http://pblweb0304.cloud:3000/api/movies
             .then(response => {
                 // kalau berhasi apa yg dilakukan
                 console.log(response.data);
@@ -35,7 +35,7 @@ function Movies() {
     const handleSubmit = (e) => {
         e.preventDefault(); // Mencegah perilaku default form (agar halaman tidak reload otomatis)
 
-        axios.post('http://pblweb0304.cloud:3000/api/movies', {
+        axios.post('/api/movies', {
             // Data yang dikirim ke server (sesuai struktur yang diharapkan API)
             title: title,               // ambil dari state title
             year: year,                 // ambil dari state year
@@ -68,7 +68,7 @@ function Movies() {
         if (!confirmDelete) return;
 
         // Jika user klik "OK", lanjut hapus data ke server menggunakan axios.delete()
-        axios.delete(`http://pblweb0304.cloud:3000/api/movies/${id}`) // Kirim request DELETE ke API dengan id movie yang dipilih
+        axios.delete(`/api/movies/${id}`) // Kirim request DELETE ke API dengan id movie yang dipilih
             .then(response => {
                 fetchData(); // Jika berhasil, panggil ulang fetchData() untuk memperbarui daftar movies
             })
