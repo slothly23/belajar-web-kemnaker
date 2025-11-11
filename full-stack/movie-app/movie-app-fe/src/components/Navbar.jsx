@@ -1,24 +1,56 @@
-// menggunakan library bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
-import { Link } from 'react-router-dom';
+// Navbar.jsx
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
+    const location = useLocation();
+
     return (
-        // ganti class jadi className
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Navbar</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+            <div className="container">
+                {/* Brand */}
+                <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
+                    🎬 MovieApp
+                </Link>
+
+                {/* Toggle button untuk mobile */}
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <Link className="nav-link" to="/">Movies</Link>
-                    </div>
+
+                {/* Nav links */}
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link
+                                className={`nav-link ${location.pathname === '/' ? 'active fw-semibold' : ''}`}
+                                to="/"
+                            >
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                className={`nav-link ${location.pathname.startsWith('/movies') ? 'active fw-semibold' : ''}`}
+                                to="/movies"
+                            >
+                                Movies
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
+
 export default Navbar;

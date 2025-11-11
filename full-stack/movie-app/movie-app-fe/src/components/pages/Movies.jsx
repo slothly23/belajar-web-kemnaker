@@ -8,7 +8,7 @@ function Movies() {
     const [movies, setMovies] = useState([]);
     // nilai awal dari field-field di dalam movies
     const [title, setTitle] = useState("");
-    const [year, setYear] = useState(0);
+    const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const navigate = useNavigate()
 
@@ -92,7 +92,7 @@ function Movies() {
         <div className="container py-4">
             {/* Header + Tombol Tambah */}
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <h3 className="fw-bold text-primary">🎬 Daftar Movie</h3>
+                <h3 className="fw-bold">Daftar Movie</h3>
                 <button
                     type="button"
                     className="btn btn-primary"
